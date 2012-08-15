@@ -1,0 +1,21 @@
+{
+  "name": "doubanIMDb",
+  "version": "0.1",
+  "manifest_version": 2,
+  "description": "the extension for movie freak",
+  "content_scripts": [
+  {
+    "matches": ["http://movie.douban.com/subject/*"],
+    "js": ["libs/jquery.min.js","build/script.js"],
+    "css": ["stylesheets/main.css"]
+  }
+  ],
+  "background" : "background.html",
+  "permissions": [
+    "tabs",
+    "http://movie.douban.com/*",
+    "http://imdbapi.xiuxiu.de/*",
+    "http://api.rottentomatoes.com/*"
+  ]
+}
+

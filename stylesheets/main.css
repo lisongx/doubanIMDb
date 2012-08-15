@@ -1,0 +1,19 @@
+#rottentomato {
+  margin-left: 10px;
+}
+
+#rottentomato b{
+  margin-left: 2px;
+}
+
+#imdb_score {
+  font-size: 14px;
+  color: green;
+  line-height: 18px;
+  clear: left;
+}
+
+#imdb_score b {
+  margin-left: 4px;
+  color: red;
+}
