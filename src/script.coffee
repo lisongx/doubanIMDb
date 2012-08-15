@@ -30,7 +30,7 @@ class Application
   injectRotten: ->
     $.getJSON @ROTTEN_URL, (data)-> 
       score = data.score
-      console.log score
+
       if score is -1
         color = "grey"
         type = "none"
