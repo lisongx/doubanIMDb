@@ -3,6 +3,11 @@
   "version": "0.1",
   "manifest_version": 2,
   "description": "the extension for movie freak",
+  "icons": {
+    "16": "images/icon128.png",
+    "48": "images/icon128.png",
+    "128": "images/icon128.png"
+  },
   "content_scripts": [
   {
     "matches": ["http://movie.douban.com/subject/*"],
@@ -14,8 +19,7 @@
   "permissions": [
     "tabs",
     "http://movie.douban.com/*",
-    "http://imdbapi.xiuxiu.de/*",
-    "http://api.rottentomatoes.com/*"
+    "http://imdbapi.xiuxiu.de/*"
   ]
 }
 
