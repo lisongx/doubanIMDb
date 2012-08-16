@@ -19,7 +19,7 @@
   "permissions": [
     "tabs",
     "http://movie.douban.com/*",
-    "http://imdbapi.xiuxiu.de/*"
+    "http://imdbapi.notimportant.org/*"
   ]
 }
 
