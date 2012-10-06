@@ -27,6 +27,18 @@ class Application
                       "<b>#{rank}</div>"
       $doubanRating.after(IMDB_TEMPLATE) # inject the html
 
+      $imdbDiv = $('#imdb_score')
+
+      $imdbDiv.css
+        "font-size": "14px"
+        "color": "green"
+        "line-height": "18px"
+        "clear": "left"
+
+      $imdbDiv.find('b').css
+        "margin-left": "4px"
+        "color": "red"
+
   injectRotten: ->
     $.getJSON @ROTTEN_URL, (data)-> 
       score = data.score
@@ -48,7 +60,11 @@ class Application
                         "<img src='#{IMG_URL}#{type}.png' /><b>#{text}</b>" +
                         "</span>"
       $('span.year').after(ROTTEN_TEMPLATE)
-      $('#rottentomato').css "color", color
+      $rottenDiv = $('#rottentomato') 
+      $rottenDiv.css
+        "color": color
+        "margin-left": "10px"
+      $rottenDiv.find('b').css "margin-left": "2px"
 
 app = new Application()
 

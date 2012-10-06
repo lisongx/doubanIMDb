@@ -11,8 +11,7 @@
   "content_scripts": [
   {
     "matches": ["http://movie.douban.com/subject/*"],
-    "js": ["libs/jquery.min.js","build/script.js"],
-    "css": ["stylesheets/main.css"]
+    "js": ["libs/jquery.min.js","build/script.js"]
   }
   ],
   "background" : "background.html",
