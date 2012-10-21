@@ -1,6 +1,6 @@
 {
   "name": "doubanIMDb",
-  "version": "0.2",
+  "version": "0.3",
   "manifest_version": 2,
   "description": "the extension for movie freak",
   "icons": {
@@ -16,7 +16,6 @@
   ],
   "background" : "background.html",
   "permissions": [
-    "tabs",
     "http://movie.douban.com/*",
     "http://imdbapi.notimportant.org/*"
   ]
