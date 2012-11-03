@@ -1,5 +1,8 @@
 BASE_URL = "http://imdbapi.notimportant.org"
-IMG_URL = "http://getimdb.sinaapp.com/"
+IMG_URL = chrome.extension.getURL("images/")
+
+getImageUrl = (type)->
+    chrome.extension.getURL("images/#{type}.png")
 
 class Application
   constructor: ->
@@ -57,7 +60,7 @@ class Application
           type = "rotten"
 
       ROTTEN_TEMPLATE = "<span dir='ltr' id='rottentomato'>" +
-                        "<img src='#{IMG_URL}#{type}.png' /><b>#{text}</b>" +
+                        "<img width='25px' src='#{getImageUrl type}' /><b>#{text}</b>" +
                         "</span>"
       $('span.year').after(ROTTEN_TEMPLATE)
       $rottenDiv = $('#rottentomato') 

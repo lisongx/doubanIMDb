@@ -18,6 +18,11 @@
   "permissions": [
     "http://movie.douban.com/*",
     "http://imdbapi.notimportant.org/*"
-  ]
+  ],
+  "web_accessible_resources": [
+      "images/fresh.png",
+      "images/rotten.png",
+      "images/none.png"
+    ]
 }
 
