@@ -1,6 +1,6 @@
 {
   "name": "doubanIMDb",
-  "version": "0.3",
+  "version": "0.4",
   "manifest_version": 2,
   "description": "the extension for movie freak",
   "icons": {
