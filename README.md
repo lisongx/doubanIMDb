@@ -19,6 +19,13 @@ Firefox和Opera用户，你可以安装这个[userscript](http://userscripts.org
 
 * 增加设置页面，可以控制功能的开关
 
+##Development
+
+这个扩展用[coffeescript](http://coffeescript.org/)编写, 你需要coffeescript的编译器来完成开发。
+
+* 安装node.js和npm
+* 安装coffeescript编译器 `npm install -g coffee-script`
+* 在开发中, 可使用 `cake build` 将 `src/` 中的 coffeescript 源文件编译成对应的 javascript 文件到`build/中`, `cake watch` 动态检测文件变化并编译。
 
 ##Feedback
 
