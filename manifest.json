@@ -14,7 +14,9 @@
     "js": ["libs/jquery.min.js","build/script.js"]
   }
   ],
-  "background" : "background.html",
+  "background" : {
+    "page" : "background.html"
+  },
   "permissions": [
     "http://movie.douban.com/*",
     "http://imdbapi.notimportant.org/*"
@@ -23,6 +25,7 @@
       "images/fresh.png",
       "images/rotten.png",
       "images/none.png"
-    ]
+    ],
+  "options_page" : "fancy-settings/source/index.html"    
 }
 

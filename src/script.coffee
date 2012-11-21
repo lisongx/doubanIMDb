@@ -11,12 +11,13 @@ class Application
     @IMDB_URL = "#{BASE_URL}/imdb/#{@imdb_id}"
 
     @ROTTEN_URL = "#{BASE_URL}/rotten/#{@imdb_id}"
-
+        
     @injectView() if @imdb_id  #inject view if there is a imdb_id
 
   injectView: ->
-    @injectImdb()
-    @injectRotten()
+    chrome.extension.sendMessage "get-settings", (response) =>
+      @injectImdb() if response.enableIMDb
+      @injectRotten() if response.enableRotten
 
   injectImdb: ->
     $.getJSON @IMDB_URL, (data) ->
