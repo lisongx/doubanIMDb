@@ -17,7 +17,7 @@ Firefox和Opera用户，你可以安装这个[userscript](http://userscripts.org
 
 ##Todos
 
-* 增加设置页面，可以控制功能的开关
+* 增加加载数据过程中的过度效果
 
 ##Development
 
