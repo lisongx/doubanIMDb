@@ -1,6 +1,5 @@
-// SAMPLE
 this.manifest = {
-    "name": "My Extension",
+    "name": "doubanIMDb",
     "icon": "icon.png",
     "settings": [
         {
