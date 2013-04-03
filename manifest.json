@@ -18,8 +18,9 @@
     "js": ["libs/jquery.min.js","build/script.js"]
   }
   ],
-  "background" : {
-    "page" : "background.html"
+  "background": {
+    "scripts": ["fancy-settings/source/lib/store.js", "build/background.js"],
+    "persistent": false
   },
   "permissions": [
     "http://movie.douban.com/*",
