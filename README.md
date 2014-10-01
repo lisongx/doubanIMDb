@@ -32,6 +32,10 @@ Firefox和Opera用户，你可以安装这个[userscript](http://userscripts.org
 * @seansay
 * @ayanamist
 
+##Donate
+
+如果有帮到你，可以考虑请我喝杯果汁，我的支付宝是 iseansay@gmail.com
+
 ##Feedback
 
 请使用Issues来反馈你遇到的问题;)
