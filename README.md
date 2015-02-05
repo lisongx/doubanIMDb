@@ -45,3 +45,6 @@ Firefox和Opera用户，你可以安装这个[userscript](http://userscripts.org
 doubanIMDb以MIT license发布
 
 * [http://opensource.org/licenses/MIT](http://opensource.org/licenses/MIT)
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/seansay/doubanimdb/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
