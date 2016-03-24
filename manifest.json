@@ -14,7 +14,9 @@
   },
   "content_scripts": [
   {
-    "matches": ["http://movie.douban.com/subject/*"],
+    "matches": [
+        "*://movie.douban.com/subject/*"
+    ],
     "js": ["libs/jquery.min.js","build/script.js"]
   }
   ],
@@ -31,6 +33,5 @@
       "images/rotten.png",
       "images/none.png"
     ],
-  "options_page" : "fancy-settings/source/index.html"    
+  "options_page" : "fancy-settings/source/index.html"
 }
-
