@@ -25,7 +25,7 @@ if_coffee = (callback)->
     callback()
 
 task 'build', 'Build extension code into build/', ->
-  if_coffee -> 
+  if_coffee ->
     ps = spawn("coffee", ["--output", JAVASCRIPTS_PATH,"--compile", COFFEESCRIPTS_PATH])
     ps.stdout.on('data', log)
     ps.stderr.on('data', log)
@@ -34,7 +34,7 @@ task 'build', 'Build extension code into build/', ->
         console.log 'failed'
 
 task 'watch', 'Build extension code into build/', ->
-  if_coffee -> 
+  if_coffee ->
     ps = spawn "coffee", ["--output", JAVASCRIPTS_PATH,"--watch", COFFEESCRIPTS_PATH]
     ps.stdout.on('data', log)
     ps.stderr.on('data', log)
@@ -42,4 +42,3 @@ task 'watch', 'Build extension code into build/', ->
       if code != 0
         console.log 'failed'
       console.log stdout
-
