@@ -17,7 +17,7 @@
     "matches": [
         "*://movie.douban.com/subject/*"
     ],
-    "js": ["libs/jquery.min.js","build/script.js"]
+    "js": ["libs/jquery.min.js", "build/script.js"]
   }
   ],
   "background": {
@@ -25,8 +25,8 @@
     "persistent": false
   },
   "permissions": [
-    "http://movie.douban.com/*",
-    "http://imdbapi.notimportant.org/*"
+    "*://movie.douban.com/*",
+    "https://douban-imdb-api.herokuapp.com/"
   ],
   "web_accessible_resources": [
       "images/fresh.png",

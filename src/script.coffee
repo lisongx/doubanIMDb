@@ -1,4 +1,4 @@
-BASE_URL = "http://imdbapi.notimportant.org"
+BASE_URL = "https://douban-imdb-api.herokuapp.com"
 IMG_URL = chrome.extension.getURL("images/")
 
 getImageUrl = (type)->
@@ -11,7 +11,7 @@ class Application
     @IMDB_URL = "#{BASE_URL}/imdb/#{@imdb_id}"
 
     @ROTTEN_URL = "#{BASE_URL}/rotten/#{@imdb_id}"
-        
+
     @injectView() if @imdb_id  #inject view if there is a imdb_id
 
   injectView: ->
@@ -24,9 +24,9 @@ class Application
       $doubanRating = $("strong.rating_num")
       rating = data.rating ?= "" # get the raing, set to empty string if null
       return if rating is ""  # return if the rating is n/a
-      
+
       rank = data.rank ?= ""
-      
+
       IMDB_TEMPLATE = "<div id='imdb_score'><span>IMDb:#{rating}</span>" +
                       "<b>#{rank}</div>"
       $doubanRating.after(IMDB_TEMPLATE) # inject the html
@@ -44,19 +44,19 @@ class Application
         "color": "red"
 
   injectRotten: ->
-    $.getJSON @ROTTEN_URL, (data)-> 
+    $.getJSON @ROTTEN_URL, (data)->
       score = data.score
 
       if score is -1
         color = "grey"
         type = "none"
         text = "N/A"
-      else 
+      else
         text = "#{score}%"
         if score >= 60
           color = "red"
           type = "fresh"
-        else 
+        else
           color = "green"
           type = "rotten"
 
@@ -64,12 +64,10 @@ class Application
                         "<img width='25px' src='#{getImageUrl type}' /><b>#{text}</b>" +
                         "</span>"
       $('span.year').after(ROTTEN_TEMPLATE)
-      $rottenDiv = $('#rottentomato') 
+      $rottenDiv = $('#rottentomato')
       $rottenDiv.css
         "color": color
         "margin-left": "10px"
       $rottenDiv.find('b').css "margin-left": "2px"
 
 app = new Application()
-
-
