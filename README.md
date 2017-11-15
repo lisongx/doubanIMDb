@@ -15,11 +15,11 @@ Firefox和Opera用户，你可以安装这个[userscript](http://userscripts.org
 * IMDb TOP250
 * 烂番茄TOMATOMETER
 
-##Todos
+## Todos
 
 * 增加加载数据过程中的过度效果
 
-##Development
+## Development
 
 这个扩展用[coffeescript](http://coffeescript.org/)编写, 你需要coffeescript的编译器来完成开发。
 
@@ -27,16 +27,16 @@ Firefox和Opera用户，你可以安装这个[userscript](http://userscripts.org
 * 安装coffeescript编译器 `npm install -g coffee-script`
 * 在开发中, 可使用 `cake build` 将 `src/` 中的 coffeescript 源文件编译成对应的 javascript 文件到`build/中`, `cake watch` 动态检测文件变化并编译。
 
-##Contributor
+## Contributor
 
 * @seansay
 * @ayanamist
 
-##Donate
+## Donate
 
-如果有帮到你，可以考虑请我喝杯果汁，我的支付宝是 iseansay@gmail.com
+如果有帮到你，我的支付宝是 iseansay@gmail.com
 
-##Feedback
+## Feedback
 
 请使用Issues来反馈你遇到的问题;)
 
