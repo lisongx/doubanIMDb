@@ -51,14 +51,21 @@ const imdbView = (req, res) => {
         return res.json({ "error": "you need give me an imdb id" })
     }
 
+
     const pageUrl = `http://www.imdb.com/title/${imdbId}`
+
+    const parseRankValFromElement = (rankElement) => {
+        const rankText = trimDomString(rankElement.textContent)
+        return rankText.replace("Top Rated Movies", "Top")
+    }
+
     return request(pageUrl).then(body => {
         const dom = new JSDOM(body)
         const document = dom.window.document
         const ratingElement = document.querySelector("span[itemprop=ratingValue]")
         const rating = ratingElement ? ratingElement.textContent : ""
         const rankElement = document.querySelector("#titleAwardsRanks strong")
-        const rank = rankElement ? trimDomString(rankElement.textContent) : ""
+        const rank = rankElement ? parseRankValFromElement(rankElement) : ""
         setResponseHeaders(res)
         return res.json({ rating, rank })
     }).catch((e) => {
