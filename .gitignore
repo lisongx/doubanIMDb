@@ -1,2 +1,4 @@
 build/*
 .cake_task_cache
+node_modules/
+package-lock.json

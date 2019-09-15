@@ -1,0 +1,28 @@
+{
+  "name": "doubanIMDb",
+  "version": "0.0.1",
+  "description": "doubanIMDb server",
+  "engines": {
+    "node": "10.x"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsdom": "^15.1.1",
+    "request-promise": "^4.2.4",
+    "wikidata-sdk": "^7.0.7"
+  },
+  "devDependencies": {
+    "request": "^2.81.0",
+    "tape": "^4.7.0"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
