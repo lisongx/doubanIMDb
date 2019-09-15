@@ -8,6 +8,13 @@ const trimDomString = (val) => {
     return val.replace(/(\r\n|\n|\r)/gm, "").trim()
 }
 
+const setResponseHeaders = (res) => {
+    res.set({
+        'Access-Control-Allow-Origin': '*',
+        'Cache-Control': 'max-age=216000'
+    });
+}
+
 const getRottenIdByimdbId = (imdbId) => {
     const sparql = `
         SELECT ?rottenId
@@ -29,7 +36,7 @@ const getRottenIdByimdbId = (imdbId) => {
 
     return request(options).then(
         wdk.simplify.sparqlResults
-    ).then( (results) => {
+    ).then((results) => {
         if (results.length > 0) {
             return results[0].rottenId
         }
@@ -41,22 +48,23 @@ const imdbView = (req, res) => {
     const imdbId = req.params.imdbId
     if (!imdbId) {
         res.status(400)
-        return res.json({"error": "you need give me an imdb id"})
+        return res.json({ "error": "you need give me an imdb id" })
     }
 
-    const pageUrl =  `http://www.imdb.com/title/${imdbId}`
+    const pageUrl = `http://www.imdb.com/title/${imdbId}`
     return request(pageUrl).then(body => {
         const dom = new JSDOM(body)
         const document = dom.window.document
         const ratingElement = document.querySelector("span[itemprop=ratingValue]")
-        const rating = ratingElement ? ratingElement.textContent: ""
+        const rating = ratingElement ? ratingElement.textContent : ""
         const rankElement = document.querySelector("#titleAwardsRanks strong")
-        const rank = rankElement ? trimDomString(rankElement.textContent): ""
-        return res.json({rating, rank})
-    }).catch( (e) => {
+        const rank = rankElement ? trimDomString(rankElement.textContent) : ""
+        setResponseHeaders(res)
+        return res.json({ rating, rank })
+    }).catch((e) => {
         console.log('error', e);
         res.status(500)
-        return res.json({"error": "my bad"})
+        return res.json({ "error": "my bad" })
     })
 }
 
@@ -64,26 +72,30 @@ const rottenView = (req, res) => {
     const imdbId = req.params.imdbId
     if (!imdbId) {
         res.status(400)
-        return res.json({"error": "you need give me an imdb id"})
+        return res.json({ "error": "you need give me an imdb id" })
     }
 
-    return getRottenIdByimdbId(imdbId).then( rottenId => {
+    return getRottenIdByimdbId(imdbId).then(rottenId => {
         const url = `https://www.rottentomatoes.com/${rottenId}`;
         return request(url)
-    }).then( body => {
+    }).then(body => {
         const dom = new JSDOM(body)
         const document = dom.window.document
         const meterElement = document.querySelector('#tomato_meter_link')
-        const score = meterElement ? trimDomString(meterElement.textContent): ""
+        const score = meterElement ? trimDomString(meterElement.textContent) : ""
+        res.set({
+            'content-type': 'application/json',
+        });
+        setResponseHeaders(res)
         return res.json({ score })
-    }).catch( (e) => {
+    }).catch((e) => {
         console.log('error', e);
         res.status(500)
-        return res.json({"error": "my bad"})
+        return res.json({ "error": "my bad" })
     })
 }
 
 express()
-  .get('/imdb/:imdbId', imdbView)
-  .get('/rotten/:imdbId', rottenView)
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+    .get('/imdb/:imdbId', imdbView)
+    .get('/rotten/:imdbId', rottenView)
+    .listen(PORT, () => console.log(`Listening on ${PORT}`))
