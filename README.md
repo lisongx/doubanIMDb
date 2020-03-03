@@ -1,16 +1,15 @@
 # doubanIMDb
 
-**欢迎Pull Requests** 
+**欢迎Pull Requests**
 
 
 豆瓣电影 + IMDb + 烂番茄
 
-![screenshots](http://i.imgur.com/U6MGE.jpg)	
+![screenshots](http://i.imgur.com/U6MGE.jpg)
 
 这里是chrome extension的源代码
 
 Firefox和Opera用户，你可以安装这个[userscript](http://userscripts.org/scripts/show/103552)
-
 
 ## Features
 
@@ -32,19 +31,13 @@ Firefox和Opera用户，你可以安装这个[userscript](http://userscripts.org
 
 ## Contributor
 
-* @seansay
+* @lisongx
 * @ayanamist
-
-## Donate
-
-如果有帮到你，我的支付宝是 iseansay@gmail.com
 
 ## Feedback
 
 请使用Issues来反馈你遇到的问题;)
 
-##License
+# #License
 
-doubanIMDb以MIT license发布
-
-* [http://opensource.org/licenses/MIT](http://opensource.org/licenses/MIT)
+**doubanIMDb** 以 [MIT license](http://opensource.org/licenses/MIT) 发布
