@@ -1,5 +1,5 @@
 {
-  "name": "doubanIMDb",
+  "name": "douban-imdb-server",
   "version": "0.0.1",
   "description": "doubanIMDb server",
   "engines": {
@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "express": "^4.17.1",
