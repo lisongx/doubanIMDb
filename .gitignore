@@ -79,7 +79,7 @@ typings/
 # nuxt.js build output
 .nuxt
 
-# react / gatsby 
+# react / gatsby
 public/
 
 # vuepress build output
@@ -108,8 +108,8 @@ dist/
 # yarn 2
 # https://github.com/yarnpkg/berry/issues/454#issuecomment-530312089
 .yarn/*
-!.yarn/releases
-!.yarn/plugins
+.yarn/releases
+.yarn/plugins
 .pnp.*
 
 .DS_Store

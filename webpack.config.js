@@ -137,7 +137,10 @@ module.exports = {
             chunks: ['popup'],
             filename: 'popup.html',
         }),
-        new CopyWebpackPlugin([{ from: 'src/assets', to: 'assets' }]),
+        new CopyWebpackPlugin([
+            { from: 'src/assets', to: 'assets' },
+            { from: 'fancy-settings', to: 'fancy-settings' },
+        ]),
         new WriteWebpackPlugin([{ name: manifest.name, data: Buffer.from(manifest.content) }]),
         extensionReloaderPlugin,
     ],

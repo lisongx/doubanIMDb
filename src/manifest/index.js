@@ -42,10 +42,10 @@ const manifestInput = {
     //     __firefox__browser_style: false,
     // },
 
-    '__chrome|opera__options_page': 'options.html',
+    '__chrome|opera__options_page': 'fancy-settings/source/index.html',
 
     options_ui: {
-        page: 'options.html',
+        page: 'fancy-settings/source/index.html',
         open_in_tab: true,
         __chrome__chrome_style: false,
     },
