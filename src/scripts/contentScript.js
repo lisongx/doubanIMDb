@@ -14,7 +14,7 @@ const getPageImdbId = () => {
     }
 };
 
-const getImageUrl = type => browser.runtime.getURL(`images/${type}.png`);
+const getImageUrl = type => browser.runtime.getURL(`assets/${type}.png`);
 
 class Application {
     constructor() {
