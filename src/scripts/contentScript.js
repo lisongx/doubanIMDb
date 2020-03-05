@@ -81,6 +81,10 @@ class Application {
         fetch(this.rottenUrl)
             .then(res => { return res.json() })
             .then(({ score }) => {
+                if (score === null || score === undefined) {
+                    return;
+                }
+
                 let color;
                 let type;
                 let text;
