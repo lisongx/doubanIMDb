@@ -1,20 +1,20 @@
-import browser from "webextension-polyfill";
+import browser from 'webextension-polyfill';
 
-const BASE_URL = "https://douban-imdb-api.herokuapp.com";
+const BASE_URL = 'https://douban-imdb-api.herokuapp.com';
 
-const DOUBAN_IMDB_LINK_TEXT = "IMDb链接:";
+const DOUBAN_IMDB_LINK_TEXT = 'IMDb链接:';
 
 const getPageImdbId = () => {
     const imdbAttr = Array.from(
-        document.querySelectorAll("#info span.pl")
-    ).filter(el => el.textContent && el.textContent === DOUBAN_IMDB_LINK_TEXT)[0];
+        document.querySelectorAll('#info span.pl')
+    ).filter(el => { return el.textContent && el.textContent === DOUBAN_IMDB_LINK_TEXT })[0];
 
     if (imdbAttr) {
         return imdbAttr.nextElementSibling.textContent;
     }
 };
 
-const getImageUrl = type => browser.runtime.getURL(`assets/${type}.png`);
+const getImageUrl = type => { return browser.runtime.getURL(`assets/${type}.png`) };
 
 class Application {
     constructor() {
@@ -29,7 +29,7 @@ class Application {
 
     injectView = () => {
         browser.runtime
-            .sendMessage("get-settings")
+            .sendMessage('get-settings')
             .then(({ enableIMDb, enableRotten }) => {
                 if (enableIMDb) {
                     this.injectImdb();
@@ -43,9 +43,9 @@ class Application {
 
     injectImdb = () => {
         fetch(this.imdbUrl)
-            .then(res => res.json())
+            .then(res => { return res.json() })
             .then(data => {
-                const doubanRatingElement = document.querySelector("strong.rating_num");
+                const doubanRatingElement = document.querySelector('strong.rating_num');
                 // get the raing, set to empty string if null
                 const rating = data.rating || '';
 
@@ -77,26 +77,24 @@ class Application {
 
     injectRotten = () => {
         fetch(this.rottenUrl)
-            .then(res => res.json())
+            .then(res => { return res.json() })
             .then(({ score }) => {
-                console.log('score', score);
-
                 let color;
                 let type;
                 let text;
 
                 if (score === -1) {
-                    color = "grey";
-                    type = "none";
-                    text = "N/A";
+                    color = 'grey';
+                    type = 'none';
+                    text = 'N/A';
                 } else {
                     text = `${score}%`;
                     if (score >= 60) {
-                        color = "red";
-                        type = "fresh";
+                        color = 'red';
+                        type = 'fresh';
                     } else {
-                        color = "green";
-                        type = "rotten";
+                        color = 'green';
+                        type = 'rotten';
                     }
                 }
 
@@ -110,13 +108,11 @@ class Application {
                     color: ${color};
                     margin-left: 10px;
                 `;
-                rottenElement.childNodes[1].style.cssText = "margin-left: 2px";
+                rottenElement.childNodes[1].style.cssText = 'margin-left: 2px';
 
                 document.querySelector('span.year').insertAdjacentElement('afterend', rottenElement);
             });
     };
 }
 
-const application = new Application();
-
-export default application;
+new Application();
