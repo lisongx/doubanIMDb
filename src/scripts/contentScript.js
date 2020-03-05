@@ -7,7 +7,9 @@ const DOUBAN_IMDB_LINK_TEXT = 'IMDb链接:';
 const getPageImdbId = () => {
     const imdbAttr = Array.from(
         document.querySelectorAll('#info span.pl')
-    ).filter(el => { return el.textContent && el.textContent === DOUBAN_IMDB_LINK_TEXT })[0];
+    ).filter(el => {
+        return el.textContent && el.textContent === DOUBAN_IMDB_LINK_TEXT
+    })[0];
 
     if (imdbAttr) {
         return imdbAttr.nextElementSibling.textContent;
@@ -110,7 +112,9 @@ class Application {
                 `;
                 rottenElement.childNodes[1].style.cssText = 'margin-left: 2px';
 
-                document.querySelector('span.year').insertAdjacentElement('afterend', rottenElement);
+                document.querySelector('span.year').insertAdjacentElement(
+                    'afterend', rottenElement
+                );
             });
     };
 }
