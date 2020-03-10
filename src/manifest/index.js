@@ -14,7 +14,6 @@ const manifestInput = {
     short_name: 'douban IMDb',
 
     permissions: [
-        'activeTab',
         '*://movie.douban.com/*',
         'https://douban-imdb-api.herokuapp.com/'
     ],
@@ -45,7 +44,7 @@ const manifestInput = {
         scripts: ['js/fancySettings.bundle.js', 'js/background.bundle.js'],
         '__chrome|opera__persistent': false,
     },
-
+    web_accessible_resources: ['assets/*.png'],
     content_scripts: [
         {
             matches: ['*://movie.douban.com/*'],
