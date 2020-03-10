@@ -7,9 +7,10 @@
 
 ![screenshots](http://i.imgur.com/U6MGE.jpg)
 
-这里是chrome extension的源代码
+- [在Chrome安装](https://chrome.google.com/webstore/detail/doubanimdb/nfibbjnhkbjlgjaojglmmibdjicidini)
 
-Firefox和Opera用户，你可以安装这个[userscript](http://userscripts.org/scripts/show/103552)
+- [在Firefox安装](https://addons.mozilla.org/en-GB/firefox/addon/douban-imdb/?src=search)
+
 
 ## Features
 
@@ -17,17 +18,50 @@ Firefox和Opera用户，你可以安装这个[userscript](http://userscripts.org
 * IMDb TOP250
 * 烂番茄TOMATOMETER
 
-## Todos
+## Setup
 
-* 增加加载数据过程中的过度效果
+Ensure you have
+- [Node.js](https://nodejs.org) 10 or later installed
+- [Yarn](https://yarnpkg.com) v1 or v2 installed
 
-## Development
+Then run the following:
+- `yarn install` to install dependencies.
+- `yarn run dev:chrome` to start the development server for chrome extension
+- `yarn run dev:firefox` to start the development server for firefox addon
+- `yarn run dev:opera` to start the development server for opera extension
+- `yarn run build:chrome` to build chrome extension
+- `yarn run build:firefox` to build firefox addon
+- `yarn run build:opera` to build opera extension
 
-这个扩展用[coffeescript](http://coffeescript.org/)编写, 你需要coffeescript的编译器来完成开发。
+### Development
 
-* 安装node.js和npm
-* 安装coffeescript编译器 `npm install -g coffee-script`
-* 在开发中, 可使用 `cake build` 将 `src/` 中的 coffeescript 源文件编译成对应的 javascript 文件到`build/中`, `cake watch` 动态检测文件变化并编译。
+- To watch file changes in developement
+
+  - Chrome
+    - `yarn run dev:chrome`
+  - Firefox
+    - `yarn run dev:firefox`
+  - Opera
+    - `yarn run dev:opera`
+
+- **Load extension in browser**
+
+  - ### Chrome
+
+    - Go to the browser address bar and type `chrome://extensions`
+    - Check the `Developer Mode` button to enable it.
+    - Click on the `Load Unpacked Extension…` button.
+    - Select your extension’s extracted directory.
+
+  - ### Firefox
+
+    - Load the Add-on via `about:debugging` as temporary Add-on.
+    - Choose the `manifest.json` file in the extracted directory
+
+  - ### Opera
+
+    - Load the extension via `opera:extensions`
+    - Check the `Developer Mode` and load as unpacked from extension’s extracted directory.
 
 ## Contributor
 
