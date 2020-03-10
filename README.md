@@ -4,10 +4,13 @@
 
 ![screenshots](http://i.imgur.com/U6MGE.jpg)
 
-- [在Chrome安装](https://chrome.google.com/webstore/detail/doubanimdb/nfibbjnhkbjlgjaojglmmibdjicidini)
+[chrome_store_link]: https://chrome.google.com/webstore/detail/doubanimdb/nfibbjnhkbjlgjaojglmmibdjicidini
+
+- [在Chrome安装][chrome_store_link]
 
 - [在Firefox安装](https://addons.mozilla.org/en-GB/firefox/addon/douban-imdb/?src=search)
 
+- [在Opera安装][chrome_store_link]
 
 ## Features
 
@@ -38,8 +41,6 @@ Then run the following:
     - `yarn run dev:chrome`
   - Firefox
     - `yarn run dev:firefox`
-  - Opera
-    - `yarn run dev:opera`
 
 - **Load extension in browser**
 
@@ -55,11 +56,6 @@ Then run the following:
     - Load the Add-on via `about:debugging` as temporary Add-on.
     - Choose the `manifest.json` file in the extracted directory
 
-  - ### Opera
-
-    - Load the extension via `opera:extensions`
-    - Check the `Developer Mode` and load as unpacked from extension’s extracted directory.
-
 ## Contributor
 
 * @lisongx
@@ -72,3 +68,7 @@ Then run the following:
 ## License
 
 [MIT](https://github.com/lisongx/doubanIMDb/blob/master/LICENSE)
+
+## Reference
+
+Thanks to the great [Web Extension Starter](https://github.com/abhijithvijayan/.web-extension-starter).
