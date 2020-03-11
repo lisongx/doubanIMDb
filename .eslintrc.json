@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "airbnb",
+    "prettier"
+  ],
+  "env": {
+    "browser": true,
+    "webextensions": true
+  }
+}
