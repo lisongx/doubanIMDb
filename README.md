@@ -71,4 +71,4 @@ Then run the following:
 
 ## Reference
 
-Thanks to the great [Web Extension Starter](https://github.com/abhijithvijayan/.web-extension-starter).
+Thanks to the great [Web Extension Starter](https://github.com/abhijithvijayan/web-extension-starter).
