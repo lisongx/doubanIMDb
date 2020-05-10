@@ -19,7 +19,7 @@ const compareLangValue = lang => {
 
 const getSitelinksByIMDbId = imdbId => {
   const query = `
-        SELECT  ?link ?lang ?name
+        SELECT DISTINCT ?link ?lang ?name
         WHERE
         {
             ?item wdt:P345 "${imdbId}".
