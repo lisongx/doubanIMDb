@@ -6740,6 +6740,11 @@ wide-align@^1.1.0:
   dependencies:
     string-width "^1.0.2 || 2"
 
+wikibase-sdk@^7.4.1:
+  version "7.4.1"
+  resolved "https://registry.yarnpkg.com/wikibase-sdk/-/wikibase-sdk-7.4.1.tgz#af3d527d2a46504ad72a694042f2d18b744b02e7"
+  integrity sha512-6noMz3puMJGO1mP1Orq5n+jobaMH/9NIYaSZIxNBR+tFfDG9zNDST8ZqBwGwka4X4QQV65gLoEk4r1TXNSSB7A==
+
 word-wrap@~1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.3.tgz#610636f6b1f703891bd34771ccb17fb93b47079c"

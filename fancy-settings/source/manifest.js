@@ -13,6 +13,12 @@ this.manifest = {
              "name": "enableRotten",
              "type": "checkbox",
              "label": i18n.get("enableRotten")
-        }        
+        },
+        {
+            "group": i18n.get("view"),
+            "name": "enableWikipedia",
+            "type": "checkbox",
+            "label": i18n.get("enableWikipedia")
+       }
     ]
 };

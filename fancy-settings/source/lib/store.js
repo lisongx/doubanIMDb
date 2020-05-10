@@ -4,8 +4,8 @@
 // License: MIT-license
 //
 (function () {
-    var Store = this.Store = function (name, defaults) {
-        var key;
+    const Store = this.Store = function (name, defaults) {
+        let key;
         this.name = name;
         
         if (defaults !== undefined) {
@@ -18,7 +18,7 @@
     };
     
     Store.prototype.get = function (name) {
-        name = "store." + this.name + "." + name;
+        name = `store.${  this.name  }.${  name}`;
         if (localStorage.getItem(name) === null) { return undefined; }
         try {
             return JSON.parse(localStorage.getItem(name));
@@ -41,22 +41,22 @@
                 }
             }
             
-            localStorage.setItem("store." + this.name + "." + name, value);
+            localStorage.setItem(`store.${  this.name  }.${  name}`, value);
         }
         
         return this;
     };
     
     Store.prototype.remove = function (name) {
-        localStorage.removeItem("store." + this.name + "." + name);
+        localStorage.removeItem(`store.${  this.name  }.${  name}`);
         return this;
     };
     
     Store.prototype.removeAll = function () {
-        var name,
-            i;
+        let name;
+            let i;
         
-        name = "store." + this.name + ".";
+        name = `store.${  this.name  }.`;
         for (i = (localStorage.length - 1); i >= 0; i--) {
             if (localStorage.key(i).substring(0, name.length) === name) {
                 localStorage.removeItem(localStorage.key(i));
@@ -67,14 +67,14 @@
     };
     
     Store.prototype.toObject = function () {
-        var values,
-            name,
-            i,
-            key,
-            value;
+        let values;
+            let name;
+            let i;
+            let key;
+            let value;
         
         values = {};
-        name = "store." + this.name + ".";
+        name = `store.${  this.name  }.`;
         for (i = (localStorage.length - 1); i >= 0; i--) {
             if (localStorage.key(i).substring(0, name.length) === name) {
                 key = localStorage.key(i).substring(name.length);
@@ -88,7 +88,7 @@
     
     Store.prototype.fromObject = function (values, merge) {
         if (merge !== true) { this.removeAll(); }
-        for (var key in values) {
+        for (const key in values) {
             if (values.hasOwnProperty(key)) {
                 this.set(key, values[key]);
             }
