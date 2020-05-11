@@ -1,13 +1,29 @@
 import browser from 'webextension-polyfill';
-import {getSitelinksByIMDbId} from './utils';
+import {getSubjectSitelinks, getCelebritySitelinks} from './utils';
 import templates from './templates';
 
 const BASE_URL = 'https://douban-imdb-api.herokuapp.com';
 
-// TODO: Move this to templates.js
 const DOUBAN_IMDB_LINK_TEXT = 'IMDb链接:';
 
-const getPageImdbId = () => {
+const DOUBAN_CELEBRITY_IMDB_LINK_TEXT = 'imdb编号';
+
+const getImageUrl = type => {
+  return browser.runtime.getURL(`assets/${type}.png`);
+};
+
+const SUBJECT_PAGE_RE = /\/subject\/\d+\//;
+const CELEBRITY_PAGE_RE = /\/celebrity\/\d+\//;
+
+const isSubjectPath = pathPath => {
+  return SUBJECT_PAGE_RE.test(pathPath);
+};
+
+const isCelebrityPath = pathPath => {
+  return CELEBRITY_PAGE_RE.test(pathPath);
+};
+
+const getSubjectImdbId = () => {
   const imdbAttr = Array.from(
     document.querySelectorAll('#info span.pl'),
   ).filter(el => {
@@ -19,43 +35,77 @@ const getPageImdbId = () => {
   }
 };
 
-const getImageUrl = type => {
-  return browser.runtime.getURL(`assets/${type}.png`);
+const getCelebrityImdbId = () => {
+  const imdbAttr = Array.from(
+    document.querySelectorAll('#headline div.info ul li span'),
+  ).filter(el => {
+    return el.textContent && el.textContent === DOUBAN_CELEBRITY_IMDB_LINK_TEXT;
+  })[0];
+
+  if (imdbAttr) {
+    return imdbAttr.nextElementSibling.textContent;
+  }
 };
 
 class Application {
   constructor() {
-    this.imdbId = getPageImdbId();
-    this.imdbUrl = `${BASE_URL}/imdb/${this.imdbId}`;
-    this.rottenUrl = `${BASE_URL}/rotten/${this.imdbId}`;
+    this.pagePath = window.location.pathname;
+  }
 
-    if (this.imdbId) {
-      this.injectView();
+  run() {
+    if (isSubjectPath(this.pagePath)) {
+      const doubanId = this.pagePath.split('/')[2];
+
+      if (doubanId) {
+        this.injectSubjectView(doubanId);
+      }
+    } else if (isCelebrityPath(this.pagePath)) {
+      const celebrityId = this.pagePath.split('/')[2];
+
+      if (celebrityId) {
+        this.injectCelebrityView(celebrityId);
+      }
     }
   }
 
-  injectView = () => {
+  injectSubjectView = doubanId => {
+    const imdbId = getSubjectImdbId();
+    const imdbUrl = `${BASE_URL}/imdb/${imdbId}`;
+    const rottenUrl = `${BASE_URL}/rotten/${imdbId}`;
+
     browser.runtime
       .sendMessage('get-settings')
       .then(({enableIMDb, enableRotten, enableWikipedia}) => {
-        if (enableIMDb) {
-          this.injectImdb();
+        if (enableIMDb && imdbUrl) {
+          this.injectImdb(imdbUrl);
         }
 
-        if (enableRotten) {
-          this.injectRotten();
+        if (enableRotten && rottenUrl) {
+          this.injectRotten(rottenUrl);
         }
 
-        if (enableWikipedia) {
-          this.injectWikipedia();
+        if (enableWikipedia && doubanId) {
+          this.injectWikipedia(doubanId, imdbId);
         }
       });
   };
 
-  injectImdb = () => {
-    fetch(this.imdbUrl)
+  injectCelebrityView = celebrityId => {
+    const imdbId = getCelebrityImdbId();
+
+    browser.runtime.sendMessage('get-settings').then(({enableWikipedia}) => {
+      if (enableWikipedia) {
+        this.injectCelebrityWikipedia(celebrityId, imdbId);
+      }
+    });
+  };
+
+  injectImdb = url => {
+    fetch(url)
       .then(res => res.json())
       .then(data => {
+        // TODO: tidy up this bit with mustache template
+
         const doubanRatingElement = document.querySelector('strong.rating_num');
         // get the raing, set to empty string if null
         const rating = data.rating || '';
@@ -86,12 +136,14 @@ class Application {
       });
   };
 
-  injectRotten = () => {
-    fetch(this.rottenUrl)
+  injectRotten = url => {
+    fetch(this.url)
       .then(res => {
         return res.json();
       })
       .then(({score}) => {
+        // TODO: tidy up this bit with mustache template
+
         if (score === null || score === undefined) {
           return;
         }
@@ -138,8 +190,8 @@ class Application {
       });
   };
 
-  injectWikipedia = () => {
-    getSitelinksByIMDbId(this.imdbId).then(sitelinks => {
+  injectWikipedia = (doubanId, imdbId) => {
+    getSubjectSitelinks(doubanId, imdbId).then(sitelinks => {
       if (sitelinks.length > 0) {
         const wpSection = templates.renderWikipediaSection(sitelinks);
         const infoSection = document.getElementById('info');
@@ -147,6 +199,17 @@ class Application {
       }
     });
   };
+
+  injectCelebrityWikipedia = (celebrityId, imdbId) => {
+    getCelebritySitelinks(celebrityId, imdbId).then(sitelinks => {
+      if (sitelinks.length > 0) {
+        const wpSection = templates.renderCelebrityWikipediaSection(sitelinks);
+        const infoSection = document.querySelector('#headline div.info ul');
+        infoSection.insertAdjacentHTML('beforeend', wpSection);
+      }
+    });
+  };
 }
 
-new Application();
+const app = new Application();
+app.run();

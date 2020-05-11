@@ -11,5 +11,17 @@ const renderWikipediaSection = sitelinks => {
   return mustache.render(template, {sitelinks});
 };
 
-export default {renderWikipediaSection};
-export {renderWikipediaSection};
+const renderCelebrityWikipediaSection = sitelinks => {
+  const template = `
+      <li>
+        <span>维基百科:</span>
+        {{#sitelinks}}
+        <a href="{{{link}}}" target="_blank" rel="nofollow">{{{lang}}}</a>
+        {{/sitelinks}}
+      </li>
+    `;
+  return mustache.render(template, {sitelinks});
+};
+
+export default {renderWikipediaSection, renderCelebrityWikipediaSection};
+export {renderWikipediaSection, renderCelebrityWikipediaSection};
