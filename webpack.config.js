@@ -1,20 +1,16 @@
 const path = require('path');
 const webpack = require('webpack');
-const wextManifest = require('wext-manifest');
 const ZipPlugin = require('zip-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WriteWebpackPlugin = require('write-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ExtensionReloader = require('webpack-extension-reloader');
+const WextManifestWebpackPlugin = require('wext-manifest-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
-
-const manifestInput = require('./src/manifest');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const targetBrowser = process.env.TARGET_BROWSER;
-const manifest = wextManifest[targetBrowser](manifestInput);
 
 const extensionReloaderPlugin =
     nodeEnv === 'development'
@@ -47,6 +43,7 @@ module.exports = {
     mode: nodeEnv,
 
     entry: {
+        manifest: './src/manifest.json',
         fancySettings: './fancy-settings/source/lib/store.js',
         background: './src/scripts/background.js',
         contentScript: './src/scripts/contentScript.js',
@@ -62,6 +59,16 @@ module.exports = {
 
     module: {
         rules: [
+            {
+                type: 'javascript/auto', // prevent webpack handling json with its own loaders,
+                test: /manifest\.json$/,
+                use: {
+                    loader: 'wext-manifest-loader',
+                    options: {
+                      usePackageJSONVersion: true, // set to false to not use package.json version for manifest
+                    },
+               },
+            },
             {
                 test: /.(js|jsx)$/,
                 include: [path.resolve(__dirname, 'src/scripts')],
@@ -116,6 +123,7 @@ module.exports = {
     plugins: [
         new webpack.ProgressPlugin(),
         new FixStyleOnlyEntriesPlugin({ silent: true }),
+        new WextManifestWebpackPlugin(),
         new webpack.EnvironmentPlugin(['NODE_ENV', 'TARGET_BROWSER']),
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: [
@@ -141,7 +149,6 @@ module.exports = {
             { from: 'src/assets', to: 'assets' },
             { from: 'fancy-settings', to: 'fancy-settings' },
         ]),
-        new WriteWebpackPlugin([{ name: manifest.name, data: Buffer.from(manifest.content) }]),
         extensionReloaderPlugin,
     ],
 
