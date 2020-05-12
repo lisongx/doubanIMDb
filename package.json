@@ -1,6 +1,6 @@
 {
   "name": "douban-imdb",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "doubanIMDb",
   "private": true,
   "main": "src/scripts/background.js",

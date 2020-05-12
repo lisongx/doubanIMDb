@@ -13,6 +13,16 @@ const manifestInput = {
   homepage_url: 'https://github.com/lisongx/doubanIMDb/',
   short_name: 'douban IMDb',
 
+  browser_action: {
+    default_popup: 'popup.html',
+    default_icon: {
+      '128': 'assets/icons/favicon-128.png',
+    },
+    default_title: '豆瓣IMDb',
+    '__chrome|opera__chrome_style': false,
+    __firefox__browser_style: false,
+  },
+
   permissions: [
     '*://movie.douban.com/*',
     'https://douban-imdb-api.herokuapp.com/',

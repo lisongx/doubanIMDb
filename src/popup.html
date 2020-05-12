@@ -1,32 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Popup</title>
+  <title>豆瓣IMDb</title>
   <link rel="stylesheet" href="css/popup.css" />
 </head>
-
 <body>
-
   <section id="popup">
-    <h2>doubnIMDb</h2>
+    <header>
+      <h2>豆瓣IMDb</h2>v<span id="ext-version"></span>
+    </header>
+
     <div class="links__holder">
       <ul>
         <li>
-          <button type="button" id="github__button">
-            GitHub
+          <button type="button" id="open-options">
+            设置/Options
           </button>
         </li>
         <li>
-          <button type="button" id="donate__button">
-            Buy Me A Coffee
+          <button type="button" id="feedback-button">
+            反馈/Feedback
+          </button>
+        </li>
+        <li>
+          <button type="button" id="donate-button">
+            捐助支持/Donate
           </button>
         </li>
       </ul>
     </div>
   </section>
+
+  <footer>
+    2011－2020, By <a id="author-link">Li Song</a>
+  </footer>
 </body>
 
 </html>
