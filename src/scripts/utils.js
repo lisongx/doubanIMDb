@@ -65,21 +65,30 @@ const genCelebrityQuery = (doubanId, imdbId) => `
 
 const getSitelinksByQuery = query => {
   const url = wbk.sparqlQuery(query);
+  console.log('rul', url);
 
   return fetch(url)
-    .then(r => r.json())
+    .then(r => {
+      console.log('r', r);
+      return r.json();
+    })
     .then(result => {
+      console.log('result', result);
       const items = wbk.simplify.sparqlResults(result);
       items.sort((a, b) => {
         return compareLangValue(a.lang) - compareLangValue(b.lang);
       });
 
       return items;
+    })
+    .catch(error => {
+      console.log('error', error);
     });
 };
 
 const getSubjectSitelinks = (doubanId, imdbId) => {
   const query = genSubjectQuery(doubanId, imdbId);
+
   return getSitelinksByQuery(query);
 };
 

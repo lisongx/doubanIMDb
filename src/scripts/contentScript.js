@@ -192,6 +192,8 @@ class Application {
 
   injectWikipedia = (doubanId, imdbId) => {
     getSubjectSitelinks(doubanId, imdbId).then(sitelinks => {
+      console.log('sitelinks', sitelinks);
+
       if (sitelinks.length > 0) {
         const wpSection = templates.renderWikipediaSection(sitelinks);
         const infoSection = document.getElementById('info');

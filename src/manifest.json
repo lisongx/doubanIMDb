@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "doubanIMDb",
-    "version": "0.7.1",
+    "version": "0.8.",
     "icons": {
         "128": "assets/icons/favicon-128.png"
     },
@@ -10,6 +10,7 @@
     "short_name": "douban IMDb",
     "permissions": [
         "*://movie.douban.com/*",
+        "https://query.wikidata.org/sparql",
         "https://douban-imdb-api.herokuapp.com/"
     ],
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
