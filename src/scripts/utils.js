@@ -75,7 +75,7 @@ const getSitelinksByQuery = query => {
       });
 
       return items;
-    })
+    });
 };
 
 const getSubjectSitelinks = (doubanId, imdbId) => {
