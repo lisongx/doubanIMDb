@@ -1,31 +1,27 @@
 {
     "manifest_version": 2,
     "name": "doubanIMDb",
-    "version": "0.0.0",
+    "version": "0.8.",
     "icons": {
         "128": "assets/icons/favicon-128.png"
-
     },
-    "description": "douban movie + IMDb + Rotten Tomatoes",
+    "description": "Douban Movie + IMDb + Rotten Tomatoes",
     "homepage_url": "https://github.com/lisongx/doubanIMDb/",
     "short_name": "douban IMDb",
     "permissions": [
         "*://movie.douban.com/*",
+        "https://query.wikidata.org/sparql",
         "https://douban-imdb-api.herokuapp.com/"
-
     ],
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
     "__chrome|firefox__author": "Li Song",
     "__opera__developer": {
         "name": "lisong"
-
     },
     "__firefox__applications": {
         "gecko": {
             "id": "{108db837-aa97-41d1-a605-568bd97ec531}"
-
         }
-
     },
     "__chrome__minimum_chrome_version": "49",
     "__opera__minimum_opera_version": "36",
@@ -34,7 +30,15 @@
         "page": "fancy-settings/source/index.html",
         "open_in_tab": true,
         "__chrome__chrome_style": false
-
+    },
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+          "128": "assets/icons/favicon-128.png"
+        },
+        "default_title": "豆瓣IMdb",
+        "__chrome|opera__chrome_style": false,
+        "__firefox__browser_style": false
     },
     "background": {
         "scripts": [

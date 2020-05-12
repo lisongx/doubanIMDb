@@ -1,4 +1,3 @@
-// SAMPLE
 this.i18n = {
     "settings": {
         "en": "Settings",
@@ -27,5 +26,9 @@ this.i18n = {
     "enableRotten": {
         "en": "enable Rotten Tomatoes",
         "zh-CN": "开启 Rotten Tomatoes 显示"
+    },
+    "enableWikipedia": {
+        "en": "enable Wikipedia link",
+        "zh-CN": "开启 维基百科链接显示"
     }
 };

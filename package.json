@@ -1,6 +1,6 @@
 {
   "name": "douban-imdb",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "doubanIMDb",
   "private": true,
   "main": "src/scripts/background.js",
@@ -20,11 +20,15 @@
     "build:opera": "cross-env NODE_ENV=production cross-env TARGET_BROWSER=opera webpack",
     "build": "yarn run build:chrome && yarn run build:firefox && yarn run build:opera",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier --write 'src/**/*.js'"
   },
   "dependencies": {
     "@babel/runtime": "^7.8.4",
-    "webextension-polyfill": "^0.6.0"
+    "lodash": "^4.17.15",
+    "mustache": "^4.0.1",
+    "webextension-polyfill": "^0.6.0",
+    "wikibase-sdk": "^7.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
