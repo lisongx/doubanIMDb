@@ -1,12 +1,22 @@
 const express = require('express');
+const apicache = require('apicache');
 const PORT = process.env.PORT || 5000;
 const {JSDOM} = require('jsdom');
 const wdk = require('wikidata-sdk');
 const request = require('request-promise');
+const redisClient = require('redis').createClient(process.env.REDIS_URL);
+
+const ZENSCRAPE_API = 'https://app.zenscrape.com/api/v1/get';
 
 const trimDomString = val => {
   return val.replace(/(\r\n|\n|\r)/gm, '').trim();
 };
+
+let cache = apicache.options({redisClient}).middleware;
+
+const onlyStatus200 = (req, res) => res.statusCode === 200;
+
+const cacheSuccesses = cache('3 days', onlyStatus200);
 
 const setResponseHeaders = res => {
   res.set({
@@ -91,11 +101,15 @@ const rottenView = (req, res) => {
 
   return getRottenIdByimdbId(imdbId)
     .then(rottenId => {
-      const uri = `https://www.rottentomatoes.com/${rottenId}`;
+      const url = `https://www.rottentomatoes.com/${rottenId}`;
       const options = {
-        uri,
+        uri: ZENSCRAPE_API,
+        qs: {
+          url,
+        },
         headers: {
           Referer: 'https://www.rottentomatoes.com/',
+          apikey: process.env.ZENSCCRAPE_KEY,
           'User-Agent':
             'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',
         },
@@ -124,5 +138,5 @@ const rottenView = (req, res) => {
 
 express()
   .get('/imdb/:imdbId', imdbView)
-  .get('/rotten/:imdbId', rottenView)
+  .get('/rotten/:imdbId', cacheSuccesses, rottenView)
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
