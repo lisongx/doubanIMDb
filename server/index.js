@@ -120,7 +120,7 @@ const rottenView = (req, res) => {
       const meterElement = document.querySelector('#tomato_meter_link');
       const score = meterElement
         ? parseInt(trimDomString(meterElement.textContent))
-        : '';
+        : null;
       res.set({
         'content-type': 'application/json',
       });
