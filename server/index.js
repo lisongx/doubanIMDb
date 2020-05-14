@@ -16,8 +16,6 @@ let cache = apicache.options({redisClient}).middleware;
 
 const onlyStatus200 = (req, res) => res.statusCode === 200;
 
-const cacheSuccesses = cache('3 days', onlyStatus200);
-
 const setResponseHeaders = res => {
   res.set({
     'Access-Control-Allow-Origin': '*',
@@ -137,6 +135,6 @@ const rottenView = (req, res) => {
 };
 
 express()
-  .get('/imdb/:imdbId', imdbView)
-  .get('/rotten/:imdbId', cacheSuccesses, rottenView)
+  .get('/imdb/:imdbId', cache('5 hours', onlyStatus200), imdbView)
+  .get('/rotten/:imdbId', cache('3 days', onlyStatus200), rottenView)
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
