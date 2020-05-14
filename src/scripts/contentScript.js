@@ -137,7 +137,7 @@ class Application {
   };
 
   injectRotten = url => {
-    fetch(this.url)
+    fetch(url)
       .then(res => {
         return res.json();
       })
