@@ -1,6 +1,6 @@
 {
   "name": "douban-imdb",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "doubanIMDb",
   "private": true,
   "main": "src/scripts/background.js",
@@ -19,6 +19,7 @@
     "build:firefox": "cross-env NODE_ENV=production cross-env TARGET_BROWSER=firefox webpack",
     "build:opera": "cross-env NODE_ENV=production cross-env TARGET_BROWSER=opera webpack",
     "build": "yarn run build:chrome && yarn run build:firefox && yarn run build:opera",
+    "deploy-server": "git push heroku `git subtree split --prefix server master`:master",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --write 'src/**/*.js' 'server/*.js'"
