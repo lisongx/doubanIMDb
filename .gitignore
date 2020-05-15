@@ -113,3 +113,6 @@ dist/
 .pnp.*
 
 .DS_Store
+
+# emacs
+*~
