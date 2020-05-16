@@ -35,4 +35,4 @@ browsers_icon: img/browsers/
 
 ## 反馈与意见
 
-你可以在通过[表单](https://jinshuju.net/f/3hBRzr)联系我们，或者直接在我们的[Github](https://github.com/lisongx/doubanIMDb/issues)添加issue。
+你可以通过这个[表单](https://jinshuju.net/f/3hBRzr)联系我们，或者直接在我们的[Github](https://github.com/lisongx/doubanIMDb/issues)添加issue。
