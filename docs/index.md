@@ -33,6 +33,20 @@ browsers_icon: img/browsers/
 
 注: Opera用户将直接使用Chrome Web Store安装。
 
+## 更新日志
+
+* v0.1 在豆瓣电影页显示IMdb和烂番茄数据
+* v0.2 显示错位bug fixed
+* v0.3 取消获取标签页活动的权限
+* v0.4 修复图片无法正常显示的bug
+* v0.5 增加开启和关闭IMDb和烂番茄的设置
+* v0.6 修复豆瓣改版导致无法显示的bug
+* v0.7 (2019-05-09) 增加电影条目显示维基百科相关链接
+* v0.8 (2019-05-15) 增加影人页面显示维基百科相关链接
+
+你可以通过这个[表单](https://jinshuju.net/f/3hBRzr)联系我们，或者直接在我们的[Github](https://github.com/lisongx/doubanIMDb/issues)添加issue。
+
+
 ## 反馈与意见
 
 你可以通过这个[表单](https://jinshuju.net/f/3hBRzr)联系我们，或者直接在我们的[Github](https://github.com/lisongx/doubanIMDb/issues)添加issue。
