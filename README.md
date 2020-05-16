@@ -2,7 +2,7 @@
 
 豆瓣电影 + IMDb + 烂番茄 + 维基百科
 
-![screenshots](http://i.imgur.com/U6MGE.jpg)
+![screenshots](https://i.imgur.com/45Y3hjF.png)
 
 [chrome_store_link]: https://chrome.google.com/webstore/detail/doubanimdb/nfibbjnhkbjlgjaojglmmibdjicidini
 
@@ -17,6 +17,7 @@
 * IMDb的电影评分
 * IMDb TOP250
 * 烂番茄TOMATOMETER
+* 维基百科链接
 
 ## Setup
 
