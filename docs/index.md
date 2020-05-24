@@ -6,7 +6,7 @@ firefox_addon: https://addons.mozilla.org/en-GB/firefox/addon/douban-imdb/
 browsers_icon: img/browsers/
 ---
 
-## 🌟Features
+## 🌟功能/Features
 
 * **IMDb** 评分, 以及其在Top 250排名显示
 * **烂番茄** 分数显示
@@ -17,7 +17,7 @@ browsers_icon: img/browsers/
 
 <img src="img/hong.jpg" alt="洪尚秀" title="韩国电影导演洪尚秀在豆瓣电影影人页面" class="mv4 grow" />
 
-## 🔧下载安装
+## 🔧下载安装/Installation
 
 <section id="download-section" class="flex flex-column flex-row-ns items-center items-start-ns">
     <a href="{{chrome_web_store}}" target="_blank" class="mr4-ns grow">
@@ -33,7 +33,11 @@ browsers_icon: img/browsers/
 
 注: Opera用户将直接使用Chrome Web Store安装。
 
-## 更新日志
+## 捐款与支持/Donation
+
+这是一个免费且开源的浏览器扩展，你可以考虑通过[buymeacoffee](https://www.buymeacoffee.com/YB5xwrn)或者[Github Sponsor](https://github.com/sponsors/lisongx/)支持它的维护以及开发。🤗谢谢。
+
+## 更新日志/Changelog
 
 * v0.1 在豆瓣电影页显示IMdb和烂番茄数据
 * v0.2 显示错位bug fixed
@@ -44,6 +48,6 @@ browsers_icon: img/browsers/
 * v0.7 (2019-05-09) 增加电影条目显示维基百科相关链接
 * v0.8 (2019-05-15) 增加影人页面显示维基百科相关链接
 
-## 反馈与意见
+## 反馈与意见/Feedback
 
 你可以通过这个[表单](https://jinshuju.net/f/3hBRzr)联系我们，或者直接在我们的[Github](https://github.com/lisongx/doubanIMDb/issues)添加issue。
